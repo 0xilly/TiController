@@ -1,0 +1,23 @@
+; Copyright (c) 2019 anthony
+
+; This Source Code Form is subject to the terms of the Mozilla Public
+; License, v. 2.0. If a copy of the MPL was not distributed with this
+; file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+#include "ti83plus.inc"
+
+ .assume ADL=1
+ .org userMem-2
+ .db tExtTok,tAsm84CeCmp
+
+ call _homeup
+ call _ClrScrnFull
+ ld hl,TutorialText
+ call _PutS
+ call _GetKey
+ call _ClrScrnFull
+ res donePrgm,(iy+doneFlags)
+ ret
+
+TutorialText:
+  .db "Excellent job! :) You havecreated your first assembly program!",0
